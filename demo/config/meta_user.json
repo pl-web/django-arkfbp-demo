@@ -1,0 +1,71 @@
+{
+  "name": "user",
+  "type": "",
+  "module": {
+    "user": {
+      "model": "user.models.User"
+    }
+  },
+  "meta": {
+    "name": {
+      "title": "",
+      "required": false,
+      "type": {
+        "string": {
+          "read_only": false
+        }
+      }
+    },
+    "age": {
+      "title": "",
+      "required": false,
+      "type": {
+        "integer": {
+          "read_only": false
+        }
+      }
+    },
+    "identity": {
+      "title": "",
+      "required": false,
+      "type": {
+        "string": {
+          "read_only": false
+        }
+      }
+    },
+    "items": {
+      "title": "查询结果列表",
+      "type": {
+        "array": {
+          "array_item": "items"
+        }
+      }
+    },
+    "user": {
+      "title": "用于返回的用户信息",
+      "required": true,
+      "type": {
+        "object": {
+          "name": "user.name",
+          "age": "user.age",
+          "identity": "user.identity"
+        }
+      }
+    }
+  },
+  "api": {
+    "name/": {
+      "get": {
+        "name": "get_name",
+        "type": "retrieve",
+        "request": {
+          "identity": "user.identity"
+        },
+        "response": {
+          "user": "user"
+        }
+      }
+    }
+  }
+}
