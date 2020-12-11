@@ -1,11 +1,11 @@
 {
-  "name": "book",
+  "name": "meta_book",
   "type": "",
   "module": {
-    "book": {
+    "meta_book": {
       "model": "book.models.Book"
     },
-    "get_book": {
+    "meta_onebook": {
       "model": "book.getbook.get_book"
     }
   },
@@ -36,36 +36,46 @@
         }
       }
     },
-    "book": {
+    "meta_book": {
       "title": "用于返回的书籍信息",
       "required": true,
       "type": {
         "object": {
-          "name": "book.name",
-          "identity": "book.identity"
+          "name": "meta_book.name",
+          "identity": "meta_book.identity"
+        }
+      }
+    },
+    "meta_onebook": {
+      "title": "用于返回的书籍信息",
+      "required": true,
+      "type": {
+        "object": {
+          "name": "meta_onebook"
         }
       }
     }
   },
   "api": {
-    "book/": {
+    "book": {
       "get": {
-        "name": "get_book",
+        "name": "book",
         "type": "retrieve",
         "request": {
-          "identity": "book.identity"
+          "identity": "meta_book.identity"
         },
         "response": {
-          "book": "get_book"
+          "book": "meta_onebook"
         }
       }
     },
-    "allbook/": {
+    "allbook": {
       "get": {
-        "name": "get_all_book",
+        "name": "allbook",
         "type": "retrieve",
+        "request": {},
         "response": {
-          "book": "book"
+          "book": "meta_book"
         }
       }
     }
