@@ -1,0 +1,73 @@
+{
+  "name": "book",
+  "type": "",
+  "module": {
+    "book": {
+      "model": "book.models.Book"
+    },
+    "get_book": {
+      "model": "book.getbook.get_book"
+    }
+  },
+  "meta": {
+    "name": {
+      "title": "",
+      "required": false,
+      "type": {
+        "string": {
+          "read_only": false
+        }
+      }
+    },
+    "identity": {
+      "title": "",
+      "required": false,
+      "type": {
+        "string": {
+          "read_only": false
+        }
+      }
+    },
+    "items": {
+      "title": "查询结果列表",
+      "type": {
+        "array": {
+          "array_item": "items"
+        }
+      }
+    },
+    "book": {
+      "title": "用于返回的书籍信息",
+      "required": true,
+      "type": {
+        "object": {
+          "name": "book.name",
+          "identity": "book.identity"
+        }
+      }
+    }
+  },
+  "api": {
+    "book/": {
+      "get": {
+        "name": "get_book",
+        "type": "retrieve",
+        "request": {
+          "identity": "book.identity"
+        },
+        "response": {
+          "book": "get_book"
+        }
+      }
+    },
+    "allbook/": {
+      "get": {
+        "name": "get_all_book",
+        "type": "retrieve",
+        "response": {
+          "book": "book"
+        }
+      }
+    }
+  }
+}
