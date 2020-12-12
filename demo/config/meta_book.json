@@ -57,13 +57,16 @@
     }
   },
   "api": {
-    "book": {
+    "book/<index>": {
       "get": {
         "name": "book",
         "type": "retrieve",
-        "request": {
-          "identity": "meta_book.identity"
+        "index": {
+          "identity": {
+            "src": "meta_onebook"
+          }
         },
+        "request": {},
         "response": {
           "book": "meta_onebook"
         }
